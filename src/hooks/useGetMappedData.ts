@@ -7,20 +7,21 @@ const stripHTML = (text: string) => text.replace(/<\/?[^>]+(>|$)/g, '');
 const useGetMappedData = (searchKeyword: string) => {
   const getMappedData = useCallback(
     (data: GroupSidesType[]) => {
+      const searchKeywords = searchKeyword.toLocaleLowerCase().split(' ');
       return data
         .map((group) => {
           return {
             name: group.name,
             questions: JSONdata.questions.filter((question) => {
-              const searchKeywords = searchKeyword.split(' ');
-
               const isThisGroup = question.groupId === group.id;
               const isSearchValid = !searchKeywords.length
                 ? true
                 : searchKeywords.every(
                     (keyword) =>
-                      question.title.includes(keyword) ||
-                      stripHTML(question.content).includes(keyword)
+                      question.title.toLocaleLowerCase().includes(keyword) ||
+                      stripHTML(question.content)
+                        .toLocaleLowerCase()
+                        .includes(keyword)
                   );
 
               return isThisGroup && isSearchValid;

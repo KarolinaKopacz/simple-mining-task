@@ -1,0 +1,24 @@
+$bg-primary: #131723;
+$bq-secondary: #232534;
+
+$font-size-primary: 14px;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: $bg-primary;
+}
+
+.app {
+  color: white;
+  background-color: $bg-primary;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  font-size: $font-size-primary;
+  padding-top: 5%;
+}
